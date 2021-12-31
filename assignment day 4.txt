@@ -1,0 +1,190 @@
+1).  How to compare two JSON have the same properties without order
+     (a).var obj1 = { name: "Person 1", age:5 };	
+     (b).var obj2 = { age:5, name: "Person 1" };
+
+
+var obj1 = { name: "Person 1", age:5 };
+var obj2 = { age:5, name: "Person 1" };
+console.log(_.isEqual(obj1, obj2))
+
+
+output => true
+
+2).Use the rest countries API url -> https://restcountries.eu/rest/v2/all and display all the country flags in console
+
+var xhr=new XMLHttpRequest();
+xhr.open("GET","https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+xhr.onload=function(){
+      if (xhr.status>=200 && xhr.status<300){
+            let data=JSON.parse(this.response)
+            for (let i=0; i<data.length;i++){
+                  let user= data[i]
+                  console.log("flag:" +user.flag)
+            }
+      }
+}
+xhr.send();
+
+
+output=>
+flag:https://restcountries.eu/data/afg.svg
+JSON.js:332 flag:https://restcountries.eu/data/ala.svg
+JSON.js:332 flag:https://restcountries.eu/data/alb.svg
+JSON.js:332 flag:https://restcountries.eu/data/dza.svg
+JSON.js:332 flag:https://restcountries.eu/data/asm.svg
+JSON.js:332 flag:https://restcountries.eu/data/and.svg
+JSON.js:332 flag:https://restcountries.eu/data/ago.svg
+JSON.js:332 flag:https://restcountries.eu/data/aia.svg
+JSON.js:332 flag:https://restcountries.eu/data/ata.svg
+JSON.js:332 flag:https://restcountries.eu/data/atg.svg
+JSON.js:332 flag:https://restcountries.eu/data/arg.svg
+JSON.js:332 flag:https://restcountries.eu/data/arm.svg
+JSON.js:332 flag:https://restcountries.eu/data/abw.svg
+JSON.js:332 flag:https://restcountries.eu/data/aus.svg
+JSON.js:332 flag:https://restcountries.eu/data/aut.svg
+JSON.js:332 flag:https://restcountries.eu/data/aze.svg
+JSON.js:332 flag:https://restcountries.eu/data/bhs.svg
+JSON.js:332 flag:https://restcountries.eu/data/bhr.svg
+JSON.js:332 flag:https://restcountries.eu/data/bgd.svg
+JSON.js:332 flag:https://restcountries.eu/data/brb.svg
+JSON.js:332 flag:https://restcountries.eu/data/blr.svg
+JSON.js:332 flag:https://restcountries.eu/data/bel.svg
+JSON.js:332 flag:https://restcountries.eu/data/blz.svg
+JSON.js:332 flag:https://restcountries.eu/data/ben.svg
+JSON.js:332 flag:https://restcountries.eu/data/bmu.svg
+JSON.js:332 flag:https://restcountries.eu/data/btn.svg
+JSON.js:332 flag:https://restcountries.eu/data/bol.svg
+JSON.js:332 flag:https://restcountries.eu/data/bes.svg
+JSON.js:332 flag:https://restcountries.eu/data/bih.svg
+JSON.js:332 flag:https://restcountries.eu/data/bwa.svg
+JSON.js:332 flag:https://restcountries.eu/data/bvt.svg
+JSON.js:332 flag:https://restcountries.eu/data/bra.svg
+JSON.js:332 flag:https://restcountries.eu/data/iot.svg
+JSON.js:332 flag:https://restcountries.eu/data/umi.svg
+JSON.js:332 flag:https://restcountries.eu/data/vgb.svg
+JSON.js:332 flag:https://restcountries.eu/data/vir.svg
+JSON.js:332 flag:https://restcountries.eu/data/brn.svg
+JSON.js:332 flag:https://restcountries.eu/data/bgr.svg
+JSON.js:332 flag:https://restcountries.eu/data/bfa.svg
+JSON.js:332 flag:https://restcountries.eu/data/bdi.svg
+JSON.js:332 flag:https://restcountries.eu/data/khm.svg
+JSON.js:332 flag:https://restcountries.eu/data/cmr.svg
+JSON.js:332 flag:https://restcountries.eu/data/can.svg
+JSON.js:332 flag:https://restcountries.eu/data/cpv.svg
+JSON.js:332 flag:https://restcountries.eu/data/cym.svg
+JSON.js:332 flag:https://restcountries.eu/data/caf.svg
+JSON.js:332 flag:https://restcountries.eu/data/tcd.svg
+JSON.js:332 flag:https://restcountries.eu/data/chl.svg
+JSON.js:332 flag:https://restcountries.eu/data/chn.svg
+JSON.js:332 flag:https://restcountries.eu/data/cxr.svg
+JSON.js:332 flag:https://restcountries.eu/data/cck.svg
+JSON.js:332 flag:https://restcountries.eu/data/col.svg
+JSON.js:332 flag:https://restcountries.eu/data/com.svg
+JSON.js:332 flag:https://restcountries.eu/data/cog.svg
+JSON.js:332 flag:https://restcountries.eu/data/cod.svg
+
+
+
+3). Use the same rest countries and print all countries name, region, sub region and population
+
+
+var xhr=new XMLHttpRequest();
+xhr.open("GET","https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+xhr.onload=function(){
+      if (xhr.status>=200 && xhr.status<300){
+            let data=JSON.parse(this.response)
+            for (let i=0; i<data.length;i++){
+                  let user= data[i]
+                  console.log("Name:" +user.name,
+                  "Region:"+user.region,
+                  "Sub-Region:"+user.subregion,
+                  "Population:"+user.population)
+            }
+      }
+}
+xhr.send();
+
+output=>
+Name:Afghanistan Region:Asia Sub-Region:Southern Asia Population:27657145
+JSON.js:333 Name:Åland Islands Region:Europe Sub-Region:Northern Europe Population:28875
+JSON.js:333 Name:Albania Region:Europe Sub-Region:Southern Europe Population:2886026
+JSON.js:333 Name:Algeria Region:Africa Sub-Region:Northern Africa Population:40400000
+JSON.js:333 Name:American Samoa Region:Oceania Sub-Region:Polynesia Population:57100
+JSON.js:333 Name:Andorra Region:Europe Sub-Region:Southern Europe Population:78014
+JSON.js:333 Name:Angola Region:Africa Sub-Region:Middle Africa Population:25868000
+JSON.js:333 Name:Anguilla Region:Americas Sub-Region:Caribbean Population:13452
+JSON.js:333 Name:Antarctica Region:Polar Sub-Region: Population:1000
+JSON.js:333 Name:Antigua and Barbuda Region:Americas Sub-Region:Caribbean Population:86295
+JSON.js:333 Name:Argentina Region:Americas Sub-Region:South America Population:43590400
+JSON.js:333 Name:Armenia Region:Asia Sub-Region:Western Asia Population:2994400
+JSON.js:333 Name:Aruba Region:Americas Sub-Region:Caribbean Population:107394
+JSON.js:333 Name:Australia Region:Oceania Sub-Region:Australia and New Zealand Population:24117360
+JSON.js:333 Name:Austria Region:Europe Sub-Region:Western Europe Population:8725931
+JSON.js:333 Name:Azerbaijan Region:Asia Sub-Region:Western Asia Population:9730500
+JSON.js:333 Name:Bahamas Region:Americas Sub-Region:Caribbean Population:378040
+JSON.js:333 Name:Bahrain Region:Asia Sub-Region:Western Asia Population:1404900
+JSON.js:333 Name:Bangladesh Region:Asia Sub-Region:Southern Asia Population:161006790
+JSON.js:333 Name:Barbados Region:Americas Sub-Region:Caribbean Population:285000
+JSON.js:333 Name:Belarus Region:Europe Sub-Region:Eastern Europe Population:9498700
+JSON.js:333 Name:Belgium Region:Europe Sub-Region:Western Europe Population:11319511
+JSON.js:333 Name:Belize Region:Americas Sub-Region:Central America Population:370300
+JSON.js:333 Name:Benin Region:Africa Sub-Region:Western Africa Population:10653654
+JSON.js:333 Name:Bermuda Region:Americas Sub-Region:Northern America Population:61954
+JSON.js:333 Name:Bhutan Region:Asia Sub-Region:Southern Asia Population:775620
+JSON.js:333 Name:Bolivia (Plurinational State of) Region:Americas Sub-Region:South America Population:10985059
+JSON.js:333 Name:Bonaire, Sint Eustatius and Saba Region:Americas Sub-Region:Caribbean Population:17408
+JSON.js:333 Name:Bosnia and Herzegovina Region:Europe Sub-Region:Southern Europe Population:3531159
+JSON.js:333 Name:Botswana Region:Africa Sub-Region:Southern Africa Population:2141206
+JSON.js:333 Name:Bouvet Island Region: Sub-Region: Population:0
+JSON.js:333 Name:Brazil Region:Americas Sub-Region:South America Population:206135893
+JSON.js:333 Name:British Indian Ocean Territory Region:Africa Sub-Region:Eastern Africa Population:3000
+JSON.js:333 Name:United States Minor Outlying Islands Region:Americas Sub-Region:Northern America Population:300
+JSON.js:333 Name:Virgin Islands (British) Region:Americas Sub-Region:Caribbean Population:28514
+JSON.js:333 Name:Virgin Islands (U.S.) Region:Americas Sub-Region:Caribbean Population:114743
+JSON.js:333 Name:Brunei Darussalam Region:Asia Sub-Region:South-Eastern Asia Population:411900
+JSON.js:333 Name:Bulgaria Region:Europe Sub-Region:Eastern Europe Population:7153784
+JSON.js:333 Name:Burkina Faso Region:Africa Sub-Region:Western Africa Population:19034397
+JSON.js:333 Name:Burundi Region:Africa Sub-Region:Eastern Africa Population:10114505
+JSON.js:333 Name:Cambodia Region:Asia Sub-Region:South-Eastern Asia Population:15626444
+JSON.js:333 Name:Cameroon Region:Africa Sub-Region:Middle Africa Population:22709892
+JSON.js:333 Name:Canada Region:Americas Sub-Region:Northern America Population:36155487
+JSON.js:333 Name:Cabo Verde Region:Africa Sub-Region:Western Africa Population:531239
+JSON.js:333 Name:Cayman Islands Region:Americas Sub-Region:Caribbean Population:58238
+JSON.js:333 Name:Central African Republic Region:Africa Sub-Region:Middle Africa Population:4998000
+JSON.js:333 Name:Chad Region:Africa Sub-Region:Middle Africa Population:14497000
+JSON.js:333 Name:Chile Region:Americas Sub-Region:South America Population:18191900
+JSON.js:333 Name:China Region:Asia Sub-Region:Eastern Asia Population:1377422166
+JSON.js:333 Name:Christmas Island Region:Oceania Sub-Region:Australia and New Zealand Population:2072
+JSON.js:333 Name:Cocos (Keeling) Islands Region:Oceania Sub-Region:Australia and New Zealand Population:550
+JSON.js:333 Name:Colombia Region:Americas Sub-Region:South America Population:48759958
+JSON.js:333 Name:Comoros Region:Africa Sub-Region:Eastern Africa Population:806153
+JSON.js:333 Name:Congo Region:Africa Sub-Region:Middle Africa Population:4741000
+JSON.js:333 Name:Congo (Democratic Republic of the) Region:Africa Sub-Region:Middle Africa Population:85026000
+JSON.js:333 Name:Cook Islands Region:Oceania Sub-Region:Polynesia Population:18100
+JSON.js:333 Name:Costa Rica Region:Americas Sub-Region:Central America Population:4890379
+JSON.js:333 Name:Croatia Region:Europe Sub-Region:Southern Europe Population:4190669
+JSON.js:333 Name:Cuba Region:Americas Sub-Region:Caribbean Population:11239004
+JSON.js:333 Name:Curaçao Region:Americas Sub-Region:Caribbean Population:154843
+JSON.js:333 Name:Cyprus Region:Europe Sub-Region:Southern Europe Population:847000
+JSON.js:333 Name:Czech Republic Region:Europe Sub-Region:Eastern Europe Population:10558524
+JSON.js:333 Name:Denmark Region:Europe Sub-Region:Northern Europe Population:5717014
+JSON.js:333 Name:Djibouti Region:Africa Sub-Region:Eastern Africa Population:900000
+JSON.js:333 Name:Dominica Region:Americas Sub-Region:Caribbean Population:71293
+JSON.js:333 Name:Dominican Republic Region:Americas Sub-Region:Caribbean Population:10075045
+JSON.js:333 Name:Ecuador Region:Americas Sub-Region:South America Population:16545799
+JSON.js:333 Name:Egypt Region:Africa Sub-Region:Northern Africa Population:91290000
+JSON.js:333 Name:El Salvador Region:Americas Sub-Region:Central America Population:6520675
+JSON.js:333 Name:Equatorial Guinea Region:Africa Sub-Region:Middle Africa Population:1222442
+JSON.js:333 Name:Eritrea Region:Africa Sub-Region:Eastern Africa Population:5352000
+JSON.js:333 Name:Estonia Region:Europe Sub-Region:Northern Europe Population:1315944
+JSON.js:333 Name:Ethiopia Region:Africa Sub-Region:Eastern Africa Population:92206005
+JSON.js:333 Name:Falkland Islands (Malvinas) Region:Americas Sub-Region:South America Population:2563
+JSON.js:333 Name:Faroe Islands Region:Europe Sub-Region:Northern Europe Population:49376
+JSON.js:333 Name:Fiji Region:Oceania Sub-Region:Melanesia Population:867000
+JSON.js:333 Name:Finland Region:Europe Sub-Region:Northern Europe Population:5491817
+JSON.js:333 Name:France Region:Europe Sub-Region:Western Europe Population:66710000
+
+
+ 
+
+
